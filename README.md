@@ -23,3 +23,8 @@ Once you download the repo, cd into the directory it is stored and run `make set
 ## Links & info
 
 My email: [**atticus@softwarefuze.com**](mailto:atticus@softwarefuze.com)<br/>Check out [**my codepen**](https://codepen.io/teake_smal/)<br/>Check out [**SDL2**](http://libsdl.org/)
+
+## Modified features (ataberk320)
+
+- Removed SDL window for improve AutumnOS layer composer logic
+- Directly drawing to DRM/KMS device.
