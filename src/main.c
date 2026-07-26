@@ -1,7 +1,11 @@
+// Original by "turbo-turnip"
+// Modified for AutumnOS by ataberk320(Autix Electronics)
+// Changed parts of code marked with "A*"
+
 #include <time.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
-#include <SDL2_TTF/SDL_TTF.h>
+#include <SDL2/SDL_ttf.h>
 #include "../Headers/window.h"
 #include "./bird.c"
 #include "../Headers/backgroundchunk.h"
@@ -16,7 +20,8 @@ int addscore(int* score) {
 }
 
 int main(int argc, char* argv[]) {
-
+    //UPDATE: Directly drawing to DRM device
+    setenv("SDL_VIDEODRIVER", "kmsdrm", 1); //A*
     time_t t;
     srand((unsigned) time(&t));
 
@@ -24,9 +29,10 @@ int main(int argc, char* argv[]) {
     int score = 0;
     char scoreText[10];
     bool alreadyCheckedScores[1000] = {};
-
-    SDL_Init(SDL_INIT_AUDIO);
-    SDL_Window *window = SDL_CreateWindow(WINDOW_TITLE, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
+    //UPDATE: added screen card initialization
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO); //A*
+    //UPDATE: fullscreen view for AutumnOS layer manager
+    SDL_Window *window = SDL_CreateWindow(WINDOW_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_BORDERLESS); //A*
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     SDL_SetWindowTitle(window, "Flappy Bird");
