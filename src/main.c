@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO); //A*
     //UPDATE: fullscreen view for AutumnOS layer manager
     SDL_Window *window = SDL_CreateWindow(WINDOW_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_BORDERLESS); //A*
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC); //A*
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED); //A*
 
     SDL_SetWindowTitle(window, "Flappy Bird");
     SDL_SetRenderDrawColor(renderer, 100, 208, 232, 255);
@@ -70,7 +70,8 @@ int main(int argc, char* argv[]) {
 
     SDL_Rect demoRect = {WINDOW_WIDTH/2-225, WINDOW_HEIGHT/2-135, 450, 270};
     SDL_Texture* demoTexture = IMG_LoadTexture(renderer, "/usr/share/games/assets/demo.png");
-
+    SDL_Texture* gameOverTexture = IMG_LoadTexture(renderer, "/usr/share/games/assets/game-over.png");
+    
     bool running = true;
     bool startFalling = false;
     bool dead = false;
@@ -208,6 +209,8 @@ int main(int argc, char* argv[]) {
         SDL_RenderFillRect(renderer, &ground);
 
         SDL_RenderPresent(renderer);
+        SDL_FreeSurface(scoreSurface);
+        SDL_DestroyTexture(scoreTexture);
     }
 
     SDL_DestroyRenderer(renderer);
