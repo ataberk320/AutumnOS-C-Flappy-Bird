@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
     // SDL_ttf font setup
     TTF_Init();
-    TTF_Font* Arial = TTF_OpenFont("./Fonts/Ceriph0765.ttf", 16);
+    TTF_Font* Arial = TTF_OpenFont("Fonts/Ceriph0765.ttf", 16);
     SDL_Color fontBlack = {0, 0, 0};
 
     init(renderer);
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
         chunk->speedX = 1;
         chunk->width = WINDOW_WIDTH;
         chunk->height = 300;
-        chunk->textureSrc = "./assets/background.png";
+        chunk->textureSrc = "assets/background.png";
         chunk->texture = IMG_LoadTexture(renderer, chunk->textureSrc);
         chunk->rect.x = chunk->x;
         chunk->rect.y = chunk->y;
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
     }
 
     SDL_Rect demoRect = {WINDOW_WIDTH/2-225, WINDOW_HEIGHT/2-135, 450, 270};
-    SDL_Texture* demoTexture = IMG_LoadTexture(renderer, "./assets/demo.png");
+    SDL_Texture* demoTexture = IMG_LoadTexture(renderer, "assets/demo.png");
 
     bool running = true;
     bool startFalling = false;
@@ -92,8 +92,8 @@ int main(int argc, char* argv[]) {
             int heightTop = rand() % (int) ((WINDOW_HEIGHT/2)*1.2 - WINDOW_HEIGHT/10 + 1) + WINDOW_HEIGHT/10;
 
             // asset handling
-            pipe->surfaceTop = IMG_Load("./assets/pipe-down.png");
-            pipe->surfaceBottom = IMG_Load("./assets/pipe-up.png");
+            pipe->surfaceTop = IMG_Load("assets/pipe-down.png");
+            pipe->surfaceBottom = IMG_Load("assets/pipe-up.png");
             pipe->textureTop = SDL_CreateTextureFromSurface(renderer, pipe->surfaceTop);
             pipe->textureBottom = SDL_CreateTextureFromSurface(renderer, pipe->surfaceBottom);
             SDL_FreeSurface(pipe->surfaceTop);
@@ -199,7 +199,7 @@ int main(int argc, char* argv[]) {
 
         if (dead) {
             SDL_Rect gameOverRect = {WINDOW_WIDTH/2-150, WINDOW_HEIGHT/2-80, 300, 160};
-            SDL_Texture* gameOverTexture = IMG_LoadTexture(renderer, "./assets/game-over.png");
+            SDL_Texture* gameOverTexture = IMG_LoadTexture(renderer, "assets/game-over.png");
             SDL_RenderCopy(renderer, gameOverTexture, NULL, &gameOverRect);
         }
 
