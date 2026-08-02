@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
         chunk->speedX = 1;
         chunk->width = WINDOW_WIDTH;
         chunk->height = 300;
-        chunk->textureSrc = "assets/background.png";
+        chunk->textureSrc = "/usr/share/games/assets/background.png";
         chunk->texture = IMG_LoadTexture(renderer, chunk->textureSrc);
         chunk->rect.x = chunk->x;
         chunk->rect.y = chunk->y;
