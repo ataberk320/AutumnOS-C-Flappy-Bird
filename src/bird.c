@@ -11,7 +11,7 @@ void init(SDL_Renderer *renderer) {
     player.x = WINDOW_WIDTH/2-15;
     player.y = WINDOW_HEIGHT/2-15;
     player.velocityY = 0;
-    player.texture = IMG_LoadTexture(renderer, "assets/flappy-bird.png");
+    player.texture = IMG_LoadTexture(renderer, "/usr/share/games/assets/flappy-bird.png");
 }
 
 void initializeBird() {
